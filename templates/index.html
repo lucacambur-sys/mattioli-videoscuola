@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="it" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mattioli United - VideoScuola Pro</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0b0f19',
+                        darkcard: '#131c2e',
+                        darkborder: '#1e293b',
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-darkbg text-slate-100 min-h-screen font-sans antialiased selection:bg-brand-500 selection:text-white flex flex-col">
+
+    <!-- Top Navigation -->
+    <header class="border-b border-darkborder bg-darkcard/85 backdrop-blur sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                <i class="fa-solid fa-graduation-cap text-white text-lg"></i>
+            </div>
+            <div>
+                <span class="text-xl font-black tracking-wider bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">MATTIOLI UNITED</span>
+                <span class="block text-xs text-indigo-400 font-medium">VideoScuola Pro Edition</span>
+            </div>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="text-indigo-400 font-bold hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-house"></i> Dashboard</button>
+            <button onclick="switchTab('courses')" id="nav-courses" class="hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-book-open"></i> Corsi</button>
+            <button onclick="switchTab('player')" id="nav-player" class="hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-play-circle"></i> Lezione Attiva</button>
+            <button onclick="switchTab('live')" id="nav-live" class="hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-broadcast-tower text-red-500 animate-pulse"></i> Live Streaming</button>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3 bg-darkborder/50 px-3 py-1.5 rounded-full border border-darkborder">
+                <div class="w-7 h-7 rounded-full bg-indigo-600 flex items-center justify-center text-xs font-bold text-white">PZ</div>
+                <span class="text-xs font-semibold">Piermiguel Z.</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6">
+
+        <!-- TAB: DASHBOARD -->
+        <section id="tab-dashboard" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                    <div class="absolute right-4 top-4 text-indigo-500/20 text-5xl"><i class="fa-solid fa-chart-line"></i></div>
+                    <span class="text-xs uppercase font-bold tracking-wider text-indigo-400">Progresso Generale</span>
+                    <h3 class="text-3xl font-extrabold mt-2">68%</h3>
+                    <p class="text-xs text-slate-400 mt-1">Completati 4 moduli su 6 questa settimana</p>
+                    <div class="w-full bg-darkborder h-2 rounded-full mt-4 overflow-hidden">
+                        <div class="bg-gradient-to-r from-indigo-500 to-violet-500 h-full w-[68%] rounded-full"></div>
+                    </div>
+                </div>
+                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                    <div class="absolute right-4 top-4 text-emerald-500/20 text-5xl"><i class="fa-solid fa-award"></i></div>
+                    <span class="text-xs uppercase font-bold tracking-wider text-emerald-400">Certificazioni Attive</span>
+                    <h3 class="text-3xl font-extrabold mt-2">3 Corsi</h3>
+                    <p class="text-xs text-slate-400 mt-1">Python, Algoritmi, Web Architetture</p>
+                    <span class="inline-block mt-4 text-xs bg-emerald-500/10 text-emerald-400 font-semibold px-2.5 py-1 rounded-full border border-emerald-500/20">Verificate su Blockchain</span>
+                </div>
+                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                    <div class="absolute right-4 top-4 text-violet-500/20 text-5xl"><i class="fa-solid fa-clock"></i></div>
+                    <span class="text-xs uppercase font-bold tracking-wider text-violet-400">Tempo di Studio</span>
+                    <h3 class="text-3xl font-extrabold mt-2">34.5 Ore</h3>
+                    <p class="text-xs text-slate-400 mt-1">+4.2 ore rispetto alla scorsa settimana</p>
+                    <span class="inline-block mt-4 text-xs bg-violet-500/10 text-violet-400 font-semibold px-2.5 py-1 rounded-full border border-violet-500/20">Target settimanale raggiunto</span>
+                </div>
+            </div>
+
+            <div class="bg-darkcard border border-darkborder rounded-2xl p-6 shadow-xl">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-bold">Corsi in Evidenza Mattioli United</h2>
+                    <button onclick="switchTab('courses')" class="text-xs text-indigo-400 hover:underline">Vedi tutti &rarr;</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="dashboard-courses-grid">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: COURSES -->
+        <section id="tab-courses" class="hidden space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <h2 class="text-2xl font-black">Catalogo Corsi Mattioli United</h2>
+                <div class="relative w-full sm:w-72">
+                    <input type="text" id="course-search" placeholder="Cerca corso..." oninput="filterCourses()" class="w-full bg-darkcard border border-darkborder rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-indigo-500 pl-10">
+                    <i class="fa-solid fa-search absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="full-courses-grid">
+                <!-- Dynamic Content -->
+            </div>
+        </section>
+
+        <!-- TAB: PLAYER & QUIZ -->
+        <section id="tab-player" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="bg-black rounded-2xl overflow-hidden border border-darkborder shadow-2xl relative aspect-video flex items-center justify-center group">
+                        <video id="lesson-video" poster="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover">
+                            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition">
+                            <button onclick="togglePlay()" id="play-btn" class="w-16 h-16 rounded-full bg-indigo-600/90 text-white flex items-center justify-center text-xl shadow-lg hover:scale-110 transition">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-darkcard border border-darkborder rounded-2xl p-6">
+                        <h3 class="text-xl font-bold">Modulo 3: Flask Routing & REST API avanzate</h3>
+                        <p class="text-sm text-slate-400 mt-2">In questa lezione esploriamo la gestione dei blueprint, la gestione dello stato e l'integrazione di endpoint sicuri con autenticazione token-based.</p>
+                    </div>
+                </div>
+
+                <!-- Sidebar Quiz -->
+                <div class="bg-darkcard border border-darkborder rounded-2xl p-6 space-y-6 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-lg mb-4 flex items-center gap-2"><i class="fa-solid fa-tasks text-indigo-400"></i> Verifica di Comprensione</h3>
+                        <div id="quiz-container" class="space-y-4">
+                            <p class="text-sm font-semibold text-slate-200">1. Qual è il decoratore corretto in Flask per definire una rotta?</p>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-3 bg-darkbg p-3 rounded-xl border border-darkborder text-sm cursor-pointer hover:border-indigo-500">
+                                    <input type="radio" name="q1" value="wrong" class="accent-indigo-500"> `@app.route('/')`
+                                </label>
+                                <label class="flex items-center gap-3 bg-darkbg p-3 rounded-xl border border-darkborder text-sm cursor-pointer hover:border-indigo-500">
+                                    <input type="radio" name="q1" value="correct" class="accent-indigo-500"> `@app.route('/path')`
+                                </label>
+                            </div>
+                            <button onclick="submitQuiz()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-xl transition text-sm shadow-lg shadow-indigo-600/20 mt-4">Invia Risposta</button>
+                        </div>
+                        <div id="quiz-result" class="hidden mt-4 p-3 rounded-xl text-sm font-medium"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB: LIVE STREAMING -->
+        <section id="tab-live" class="hidden space-y-6">
+            <div class="bg-darkcard border border-darkborder rounded-2xl p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="bg-black rounded-2xl overflow-hidden border border-darkborder aspect-video relative flex items-center justify-center">
+                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-2 shadow-lg">
+                            <span class="w-2 h-2 rounded-full bg-white animate-ping"></span> LIVE STREAMING
+                        </div>
+                        <div class="text-center space-y-2">
+                            <i class="fa-solid fa-satellite-dish text-5xl text-indigo-500 animate-pulse"></i>
+                            <h3 class="font-bold text-lg">Mattioli United Masterclass in Diretta</h3>
+                            <p class="text-xs text-slate-400">Streaming attivo con latenza ultra-bassa</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Live Chat -->
+                <div class="bg-darkbg border border-darkborder rounded-2xl p-4 flex flex-col h-[400px] lg:h-auto justify-between">
+                    <div class="border-b border-darkborder pb-3 flex items-center justify-between">
+                        <span class="font-bold text-sm">Chat in Diretta</span>
+                        <span class="text-xs text-emerald-400"><i class="fa-solid fa-users"></i> 142 Connessi</span>
+                    </div>
+                    <div id="chat-messages" class="flex-1 overflow-y-auto space-y-3 py-3 text-xs">
+                        <div class="bg-darkcard p-2 rounded-lg border border-darkborder"><span class="font-bold text-indigo-400">Prof. Mattioli:</span> Benvenuti ragazzi alla live di oggi!</div>
+                        <div class="bg-darkcard p-2 rounded-lg border border-darkborder"><span class="font-bold text-indigo-400">Piermiguel:</span> Audio e video perfetti!</div>
+                    </div>
+                    <div class="flex gap-2 pt-2 border-t border-darkborder">
+                        <input type="text" id="chat-input" placeholder="Scrivi un messaggio..." class="flex-1 bg-darkcard border border-darkborder rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+                        <button onclick="sendChatMessage()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl text-xs font-semibold"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-darkborder py-6 text-center text-xs text-slate-500">
+        &copy; 2026 Mattioli United VideoScuola Pro. Sviluppato con Flask & Tailwind CSS.
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        let allCourses = [];
+
+        async function loadCourses() {
+            try {
+                const res = await fetch('/api/courses');
+                allCourses = await res.json();
+                renderCourses(allCourses);
+            } catch (err) {
+                console.error("Errore caricamento corsi:", err);
+            }
+        }
+
+        function renderCourses(courses) {
+            const dashGrid = document.getElementById('dashboard-courses-grid');
+            const fullGrid = document.getElementById('full-courses-grid');
+            
+            let dashHTML = '';
+            let fullHTML = '';
+
+            courses.forEach(c => {
+                const card = `
+                    <div class="bg-darkbg border border-darkborder rounded-xl p-4 flex flex-col justify-between hover:border-indigo-500/50 transition group">
+                        <div>
+                            <span class="text-[10px] uppercase font-bold tracking-wider bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded-md border border-indigo-500/20">${c.category}</span>
+                            <h4 class="font-bold text-sm mt-3 group-hover:text-indigo-400 transition">${c.title}</h4>
+                            <p class="text-xs text-slate-400 mt-1"><i class="fa-solid fa-clock"></i> ${c.duration} &bull; ${c.lessons} lezioni</p>
+                        </div>
+                        <div class="mt-4">
+                            <div class="flex justify-between text-xs text-slate-400 mb-1">
+                                <span>Progresso</span>
+                                <span class="font-semibold text-white">${c.progress}%</span>
+                            </div>
+                            <div class="w-full bg-darkborder h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-indigo-500 h-full rounded-full" style="width: ${c.progress}%"></div>
+                            </div>
+                            <button onclick="switchTab('player')" class="w-full mt-3 bg-darkcard hover:bg-indigo-600 text-white text-xs font-semibold py-2 rounded-lg border border-darkborder transition">Riprendi</button>
+                        </div>
+                    </div>
+                `;
+                fullHTML += card;
+                if(c.id <= 4) dashHTML += card;
+            });
+
+            if(dashGrid) dashGrid.innerHTML = dashHTML;
+            if(fullGrid) fullGrid.innerHTML = fullHTML;
+        }
+
+        function filterCourses() {
+            const query = document.getElementById('course-search').value.toLowerCase();
+            const filtered = allCourses.filter(c => c.title.toLowerCase().includes(query) || c.category.toLowerCase().includes(query));
+            renderCourses(filtered);
+        }
+
+        function switchTab(tabId) {
+            ['dashboard', 'courses', 'player', 'live'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+                const navBtn = document.getElementById(`nav-${t}`);
+                if(navBtn) navBtn.classList.remove('text-indigo-400', 'font-bold');
+            });
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if(activeBtn) activeBtn.classList.add('text-indigo-400', 'font-bold');
+        }
+
+        function togglePlay() {
+            const video = document.getElementById('lesson-video');
+            if(video.paused) {
+                video.play();
+                document.getElementById('play-btn').innerHTML = '<i class="fa-solid fa-pause"></i>';
+            } else {
+                video.pause();
+                document.getElementById('play-btn').innerHTML = '<i class="fa-solid fa-play ml-1"></i>';
+            }
+        }
+
+        async function submitQuiz() {
+            const selected = document.querySelector('input[name="q1"]:checked');
+            const resDiv = document.getElementById('quiz-result');
+            resDiv.classList.remove('hidden');
+            if(!selected) {
+                resDiv.className = 'mt-4 p-3 rounded-xl text-sm font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20';
+                resDiv.innerText = 'Seleziona una risposta prima di inviare.';
+                return;
+            }
+            const isCorrect = selected.value === 'correct';
+            const res = await fetch('/api/quiz/submit', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ score: isCorrect ? 1 : 0, total: 1 })
+            });
+            const data = await res.json();
+            if(isCorrect) {
+                resDiv.className = 'mt-4 p-3 rounded-xl text-sm font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
+                resDiv.innerText = data.message;
+            } else {
+                resDiv.className = 'mt-4 p-3 rounded-xl text-sm font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20';
+                resDiv.innerText = data.message;
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            if(!input.value.trim()) return;
+            const chatBox = document.getElementById('chat-messages');
+            chatBox.innerHTML += `<div class="bg-darkcard p-2 rounded-lg border border-darkborder"><span class="font-bold text-indigo-400">Piermiguel Z.:</span> ${input.value}</div>`;
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        window.onload = loadCourses;
+    </script>
+</body>
+</html>
